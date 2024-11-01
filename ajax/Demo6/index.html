@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+    </style>
+</head>
+
+<body>
+    <label for="province">省</label>
+    <select name="province" class="province">
+        <option class="p1"></option>
+    </select>
+    <label for="city">市</label>
+    <select name="city" class="city">
+        <option class="c1"></option>
+    </select>
+    <label for="area">区</label>
+    <select name="area" class="area">
+        <option class="a1"></option>
+    </select>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script>
+        let pname = ''
+        axios({ url: 'https://hmajax.itheima.net/api/province' }).then(result => {
+            pname = result.data.list[0]
+            document.querySelector('.p1').innerHTML = pname
+            return axios({ url: 'https://hmajax.itheima.net/api/city', params: { pname } })
+        }).then(result => {
+            const cname = result.data.list[0]
+            document.querySelector('.c1').innerHTML = cname
+            return axios({ url: 'https://hmajax.itheima.net/api/area', params: { pname, cname } })
+        }).then(result => {
+            const areaName = result.data.list[0]
+            document.querySelector('.a1').innerHTML = areaName
+        })
+    </script>
+</body>
+
+</html>

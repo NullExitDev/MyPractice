@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        ul {
+            list-style: none;
+        }
+    </style>
+</head>
+
+<body>
+    <ul class="nav">
+    </ul>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script>
+        const newArr = []
+        const list = ['110100', '310100', '440100', '440300']
+        list.forEach((item, index) => {
+            newArr[index] = axios({ url: 'https://hmajax.itheima.net/api/weather', params: { city: item } })
+        })
+        const p = Promise.all(newArr)
+        p.then(res => {
+            const htmlStr = res.map(item => `<li>${item.data.data.weather}</li>`).join('')
+            document.querySelector('.nav').innerHTML = htmlStr
+        })
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button class="reg">Register</button>
+    <script>
+        document.querySelector('.reg').addEventListener('click', () => {
+            const xhr = new XMLHttpRequest()
+            xhr.open('POST', 'https://hmajax.itheima.net/api/register')
+            xhr.addEventListener('loadend', () => {
+                console.log(xhr.response);
+            })
+            //设置请求头
+            xhr.setRequestHeader('Content-Type', 'application/json')
+            //需要提交的数据
+            const userObj = {
+                username: 'adminDemo',
+                password: '123456'
+            }
+            //转JSON
+            const userStr = JSON.stringify(userObj)
+            xhr.send(userStr)
+        })
+    </script>
+</body>
+
+</html>

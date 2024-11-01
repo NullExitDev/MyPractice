@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        select {
+            width: 100px;
+        }
+    </style>
+</head>
+
+<body>
+    <span>省</span>
+    <select class="province">
+        <option value="normal">省份</option>
+    </select>
+    <span>市</span>
+    <select class="city">
+        <option value="normal">城市</option>
+    </select>
+    <span>区</span>
+    <select class="area">
+        <option value="normal">地区</option>
+    </select>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script>
+        axios({
+            url: 'https://hmajax.itheima.net/api/province'
+        }).then(result => {
+            const htmlStr = result.data.list.map(item => {
+                return `<option value="${item}">${item}</option>`
+            }).join('')
+            document.querySelector('.province').innerHTML = '<option value="normal">省份</option>' + htmlStr
+
+        })
+
+        document.querySelector('.province').addEventListener('change', async e => {
+            const result = await axios({ url: 'https://hmajax.itheima.net/api/city', params: { pname: e.target.value } })
+            const htmlStr = result.data.list.map(item => {
+                return `<option value="${item}">${item}</option>`
+            }).join('')
+            document.querySelector('.city').innerHTML = '<option value="normal">城市</option>' + htmlStr
+            document.querySelector('.area').innerHTML = '<option value="normal">地区</option>'
+        })
+
+        document.querySelector('.city').addEventListener('change', async e => {
+            const result = await axios({ url: 'https://hmajax.itheima.net/api/area', params: { pname: document.querySelector('.province').value, cname: e.target.value } })
+            const htmlStr = result.data.list.map(item => {
+                return `<option value="${item}">${item}</option>`
+            })
+            document.querySelector('.area').innerHTML = '<option value="normal">地区</option>' + htmlStr
+        })
+    </script>
+</body>
+
+</html>

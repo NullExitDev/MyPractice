@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        var str = 'asohopgouoidao'
+        //如果有o这个元素（用于判断），则替换为-
+        while (str.indexOf('o') !== -1) {
+            str = str.replace('o', '-')
+        }
+        console.log(str);
+        //转换为数组
+        var str2 = 'red,blue,green'
+        str2 = str2.split(',')
+        console.log(str2);
+        //截取字符串(开始，截取长度)
+        var str3 = 'asdfghjkl'
+        newstr = str3.substr(1, 6)
+        console.log(newstr);
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

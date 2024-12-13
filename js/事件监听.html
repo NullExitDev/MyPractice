@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        button {
+            margin-top: 10px;
+            width: 100px;
+            height: 40px;
+        }
+    </style>
+</head>
+
+<body>
+    <button>传统事件</button>
+    <button>事件监听</button>
+    <script>
+        var btn = document.querySelectorAll('button')
+        btn[0].onclick = function (e) {
+            alert('传统事件')
+            btn[0].onclick = null
+            //e = e || windows.event
+            console.log(e);
+        }
+        // btn[1].addEventListener('click', function () {
+        //     alert('事件监听1')
+        // })
+        // btn[1].addEventListener('click', function () {
+        //     alert('事件监听2')
+        // })
+        btn[1].addEventListener('click', fn)
+        function fn() {
+            alert('事件监听')
+            btn[1].removeEventListener('click', fn)
+        }
+    </script>
+</body>
+
+</html>

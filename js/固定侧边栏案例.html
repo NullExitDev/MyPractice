@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            user-select: none;
+        }
+
+        span {
+            display: block;
+            position: absolute;
+            left: 50%;
+            bottom: 0;
+            transform: translateX(-50%);
+            font-size: 20px;
+            color: #fff;
+        }
+
+        .back {
+            position: absolute;
+            width: 120px;
+            height: 200px;
+            background-color: black;
+            left: 50%;
+            top: 520px;
+            margin-left: 600px;
+        }
+
+        .w {
+            margin: 10px auto;
+            width: 1200px;
+        }
+
+        .header {
+            height: 500px;
+            background-color: #3c3c3c;
+        }
+
+        .banner {
+            height: 600px;
+            background-color: antiquewhite;
+        }
+
+        .main {
+            height: 1200px;
+            background-color: blueviolet;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="back">
+        <span class="goback">Back</span>
+    </div>
+    <div class="header w"></div>
+    <div class="banner w"></div>
+    <div class="main w"></div>
+    <script>
+        //获取元素
+        var goback = document.querySelector('.goback')
+        var back = document.querySelector('.back')
+        var banner = document.querySelector('.banner')
+        var main = document.querySelector('.main')
+        var bannerTop = banner.offsetTop
+        var backTop = back.offsetTop - bannerTop
+        var mainTop = main.offsetTop
+        // document.addEventListener('scroll', function () {
+        //     //页面的被卷去的距离其实就是当页面加载时，banner的offsetTop值
+        //     if (window.pageYOffset >= bannerTop) {
+        //         back.style.position = 'fixed'
+        //         back.style.top = backTop + 10 + 'px'
+        //     } else {
+        //         back.style.position = 'absolute'
+        //         back.style.top = '520px'
+        //     }
+        //     //同上
+        //     if (window.pageYOffset >= mainTop) {
+        //         goback.style.display = 'block'
+        //     } else {
+        //         goback.style.display = 'none'
+        //     }
+        // })
+        //动画
+        function animate(obj, target, callback) {
+            clearInterval(obj.timer)
+            obj.timer = setInterval(function () {
+                var step = (target - window.pageYOffset) / 10
+                step = step > 0 ? Math.ceil(step) : Math.floor(step)
+                if (window.pageYOffset == target) {
+                    clearInterval(obj.timer)
+                    if (callback) {
+                        callback()
+                    }
+                }
+                window.scroll(0, window.pageYOffset + step)
+            }, 15)
+        }
+
+
+        goback.addEventListener('click', function () {
+            animate(window, main.offsetTop)
+        })
+    </script>
+</body>
+
+</html>

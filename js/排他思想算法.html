@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button>例子</button>
+    <button>例子</button>
+    <button>例子</button>
+    <button>例子</button>
+    <button>例子</button>
+    <script>
+        var btn = document.getElementsByTagName('button')
+        console.log(btn);
+        for (var i = 0; i < btn.length; i++) {
+            btn[i].onclick = function () {
+                //先把每个按钮也就是btn[i]的背景颜色清除
+                for (var i = 0; i < btn.length; i++) {
+                    btn[i].style.backgroundColor = ''
+                }
+                //再设置被点击的内个元素的背景色！
+                this.style.backgroundColor = 'pink'
+            }
+        }
+    </script>
+</body>
+
+</html>

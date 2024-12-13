@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="box" id="box1">1</div>
+    <div class="box">2</div>
+    <div class="box">3</div>
+    <script>
+        //通过id接口
+        var box1 = document.getElementById('box1')
+        console.log(box1);
+        //通过标签 返回值为伪数组
+        var boxs = document.getElementsByTagName('div')
+        console.log(boxs[1]);
+        //获取html跟body元素
+        document.body
+        document.documentElement
+        //H5新增获取方式
+        //1.通过class获取
+        // document.getElementsByClassName()
+        //2.选择指定选择器的第一个元素
+        var thebox = document.querySelector('.box')
+        //3.选择指定选择器的所有元素，与通过class选择器同
+        var allbox = document.querySelectorAll('.box')
+        console.log(thebox);
+        console.log(allbox);
+    </script>
+</body>
+
+</html>

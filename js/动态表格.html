@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            user-select: none;
+        }
+
+        table {
+            margin: 50px auto;
+            width: 400px;
+            border: 1px solid #000;
+            border-spacing: 0;
+            border-collapse: collapse;
+        }
+
+        td {
+            text-align: center;
+            border: 1px solid #000;
+        }
+
+        th {
+            color: #fff;
+            background-color: #3c3c3c;
+        }
+    </style>
+</head>
+
+<body>
+    <table>
+        <thead>
+            <th>名字</th>
+            <th>项目</th>
+            <th>成绩</th>
+            <th>操作</th>
+        </thead>
+        <tbody></tbody>
+    </table>
+    <script>
+        //利用数组来储存对象
+        var list = [{
+            userName: '小明',
+            Project: 'JavaScript',
+            score: 100
+        },
+        {
+            userName: '小红',
+            Project: 'JavaScript',
+            score: 80
+        },
+        {
+            userName: '小明',
+            Project: 'JavaScript',
+            score: 97
+        },
+        {
+            userName: '小明',
+            Project: 'JavaScript',
+            score: 65
+        }]
+        //获取页面元素tbody
+        var tb = document.querySelector('tbody')
+        //外层控制行，行就是list里面有几个元素
+        for (var i = 0; i < list.length; i++) {
+            var tr = document.createElement('tr')
+            tb.appendChild(tr)
+            //里层控制单元格数量 遍历对象可以知道对象里有几个元素
+            for (var k in list[i]) {
+                td = document.createElement('td')
+                //list[i][k]代表的是第i个对象里的值
+                td.innerHTML = list[i][k]
+                tr.appendChild(td)
+            }
+            //删除元素单独添加
+            td = document.createElement('td')
+            td.innerHTML = '<a href="javascript:;">删除</a>'
+            tr.appendChild(td)
+        }
+        //注册事件 点击删除当前行
+        var as = document.querySelectorAll('a')
+        for (var i = 0; i < as.length; i++) {
+            as[i].onclick = function () {
+                //删除当前a标签的父元素（td）的父元素（tr）
+                tb.removeChild(this.parentNode.parentNode)
+            }
+        }
+
+
+    </script>
+</body>
+
+</html>

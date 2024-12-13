@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="text" name="" id="username"><input type="checkbox" name="" id="remember">记住用户名
+    <script>
+        var input = document.querySelector('#username')
+        var remember = document.querySelector('#remember')
+        //每次打开页面先判断是否有username这个数据
+        if (localStorage.getItem('username')) {
+            //如果有就将input里面的内容设置成username里面的数据，并且选中选项框
+            input.value = localStorage.getItem('username')
+            remember.checked = true
+        }
+        //如果选项框发生了改变
+        remember.addEventListener('change', function () {
+            //如果选中那么就存储这个数据
+            if (this.checked) {
+                localStorage.setItem('username', input.value)
+            } else {
+                //如果没选中就移除数据
+                localStorage.removeItem('username')
+            }
+        })
+    </script>
+
+</body>
+
+</html>

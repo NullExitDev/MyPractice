@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button id=btn>Click</button>
+    <script>
+        var btn = document.getElementById('btn')
+        //事件源（谁）事件类型（怎么触发的：如点击）事件处理程序（结果：用函数包裹）
+        btn.onclick = function () {
+            alert('Hello')
+        }
+    </script>
+</body>
+
+</html>

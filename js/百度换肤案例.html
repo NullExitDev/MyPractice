@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            user-select: none;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: url("images/bg1.jpg")no-repeat;
+            background-size: cover;
+            transition: .2s;
+        }
+
+        .container {
+            margin: 10px auto;
+            width: 1000px;
+            height: 150px;
+        }
+
+        .container ul li {
+            float: left;
+            margin-right: 2px;
+            width: 248px;
+            height: 150px;
+            box-shadow: 0 0 10px 5px rgba(0, 0, 0, .3);
+            cursor: pointer;
+        }
+
+        .container ul li img {
+            width: inherit;
+            height: inherit;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container" id="container">
+        <ul>
+            <li>
+                <img src="images/bg1.jpg">
+            </li>
+            <li>
+                <img src="images/bg2.jpg">
+            </li>
+            <li>
+                <img src="images/bg3.jpg">
+            </li>
+            <li style="margin-right: 0;">
+                <img src="images/bg4.jpg">
+            </li>
+        </ul>
+    </div>
+    <script>
+        var img = document.getElementById('container').getElementsByTagName('img')
+        for (var i = 0; i < img.length; i++) {
+            img[i].onclick = function () {
+                document.body.style.backgroundImage = 'url(' + this.src + ')'
+            }
+        }
+    </script>
+</body>
+
+</html>

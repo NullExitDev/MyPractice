@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            user-select: none;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        .container {
+            margin: 100px auto;
+            width: 800px;
+            height: 200px;
+        }
+
+        li {
+            float: left;
+            width: 200px;
+            height: 50px;
+            line-height: 50px;
+            text-align: center;
+            background-color: #f0dfdf;
+            transition: .3s;
+
+        }
+
+        .current {
+            color: #fff;
+            background-color: #3c3c3c;
+        }
+
+        .items {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container" id="container">
+        <ul>
+            <li class="current">首页</li>
+            <li>产品</li>
+            <li>更多</li>
+            <li>团队</li>
+        </ul>
+        <div class="items" style="display: block;">这里是首页</div>
+        <div class="items">这里是产品</div>
+        <div class="items">这里是更多</div>
+        <div class="items">这里是团队</div>
+    </div>
+    <script>
+        var lis = document.getElementById('container').getElementsByTagName('li')
+        var items = document.querySelectorAll('.items')
+        for (var i = 0; i < lis.length; i++) {
+            //先给所有li加一个自定义属性，标记出索引号
+            lis[i].setAttribute('index', i)
+            //注册事件
+            lis[i].onclick = function () {
+                //tab栏切换
+                for (var i = 0; i < lis.length; i++) {
+                    lis[i].className = ''
+                }
+                this.className = 'current'
+                //获取所有伪数组
+                var index = this.getAttribute('index')
+                for (var i = 0; i < items.length; i++) {
+                    items[i].style.display = 'none'
+                }
+                //索引号绑定索引号，伪数组=伪数组
+                items[index].style.display = 'block'
+
+            }
+
+
+        }
+    </script>
+</body>
+
+</html>

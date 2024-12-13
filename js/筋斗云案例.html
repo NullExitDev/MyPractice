@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            user-select: none;
+        }
+
+        a {
+            text-decoration: none;
+            color: #fff;
+        }
+
+        ul {
+            position: absolute;
+            list-style: none;
+        }
+
+        .container {
+            position: relative;
+            width: 800px;
+            height: 50px;
+            background-color: chocolate;
+            margin: 100px auto;
+        }
+
+        li {
+            float: left;
+            width: 200px;
+            height: 50px;
+            text-align: center;
+            line-height: 50px;
+        }
+
+        .mask {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 200px;
+            height: 50px;
+            background-color: palegreen;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <span class="mask"></span>
+        <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Team</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">More</a></li>
+        </ul>
+    </div>
+    <script src="animate/animate.js"></script>
+    <script>
+        var container = document.querySelector('.container')
+        var mask = document.querySelector('.mask')
+        var lis = container.querySelectorAll('li')
+        var current = 0
+        for (var i = 0; i < lis.length; i++) {
+            lis[i].addEventListener('mouseenter', function () {
+                animate(mask, this.offsetLeft)
+            })
+
+            lis[i].addEventListener('click', function () {
+                current = this.offsetLeft
+            })
+
+            lis[i].addEventListener('mouseleave', function () {
+                animate(mask, current)
+            })
+        }
+    </script>
+</body>
+
+</html>

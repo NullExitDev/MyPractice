@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div {
+            display: none;
+            margin-bottom: 20px;
+            width: 100px;
+            height: 30px;
+            line-height: 30px;
+            background-color: bisque;
+            border: 1px solid #000;
+        }
+    </style>
+</head>
+
+<body>
+    <div>123</div>
+    <input type="text">
+    <script>
+        var div = document.querySelector('div')
+        var input = document.querySelector('input')
+        console.log(div + input);
+        input.addEventListener('keyup', function () {
+            if (this.value == '') {
+                div.style.display = 'none'
+            } else {
+                div.innerHTML = this.value
+                div.style.display = 'block'
+            }
+        })
+
+        input.addEventListener('blur', function () {
+            div.style.display = 'none'
+        })
+
+        input.addEventListener('focus', function () {
+            if (this.value != '') {
+                div.style.display = 'block'
+            }
+        })
+    </script>
+</body>
+
+</html>

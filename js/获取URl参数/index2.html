@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div></div>
+    <script>
+        var div = document.querySelector('div')
+        //截取字符串，从第一个字符串后开始截取，默认截取到末尾
+        var parms = location.search.substr(1)
+        //分割字符串 返回值为数组
+        parms = parms.split('=')
+        console.log(parms);
+        div.innerHTML = 'Hello ' + parms[1]
+    </script>
+</body>
+
+</html>

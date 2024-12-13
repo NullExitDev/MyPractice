@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            user-select: none;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        table {
+            width: 350px;
+            height: 100px;
+            text-align: center;
+            border: 1px solid #000;
+            border-spacing: 0;
+            border-collapse: collapse;
+        }
+
+        thead {
+            background-color: aqua;
+        }
+
+        td {
+            height: 40px;
+            border: 1px solid #000;
+        }
+    </style>
+</head>
+
+<body>
+    <table>
+        <thead>
+            <tr>
+                <td>
+                    <input type="checkbox" id="theall">
+                </td>
+                <td>ClientName</td>
+                <td>ClientInfo</td>
+            </tr>
+        </thead>
+        <tbody id="tds">
+            <tr>
+                <td>
+                    <input type="checkbox">
+                </td>
+                <td>Demo1</td>
+                <td>Demo2</td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="checkbox">
+                </td>
+                <td>Demo1</td>
+                <td>Demo2</td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="checkbox">
+                </td>
+                <td>Demo1</td>
+                <td>Demo2</td>
+            </tr>
+        </tbody>
+    </table>
+    <script>
+        var all = document.getElementById('theall')
+        var other = document.getElementById('tds').getElementsByTagName('input')
+        all.onclick = function () {
+            for (var i = 0; i < other.length; i++) {
+                //让下面三个选中框跟最上面的绑定
+                other[i].checked = this.checked
+            }
+        }
+        //遍历所有选中框
+        for (var i = 0; i < other.length; i++) {
+            //注册事件
+            other[i].onclick = function () {
+                //用于控制全选的变量 
+                var flag = true
+                //此循环检测三个选中框的状态
+                for (var i = 0; i < other.length; i++) {
+                    //如果 othe[i]里面有一个选中框是false，那么就让flag=false
+                    if (other[i].checked == false) {
+                        flag = false
+                        break
+                    }
+                }
+                all.checked = flag
+            }
+        }
+        console.log(other[0].checked);
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            user-select: none;
+        }
+
+        div {
+            position: relative;
+            width: 200px;
+            height: 200px;
+            background-color: rgba(234, 240, 63, 0.868);
+        }
+    </style>
+</head>
+
+<body>
+    <div></div>
+    <script>
+        var div = document.querySelector('div')
+        console.log(div);
+        document.addEventListener('mousemove', function (e) {
+            var x = e.pageX
+            var y = e.pageY
+            console.log(x + y);
+            div.style.top = y - 100 + 'px'
+            div.style.left = x - 100 + 'px'
+        })
+    </script>
+</body>
+
+</html>

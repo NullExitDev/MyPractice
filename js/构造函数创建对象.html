@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function arr(userName, age, sex) {
+            this.userName = userName
+            this.age = age
+            this.sex = sex
+            this.music = function (song) {
+                console.log(song);
+            }
+        }
+        var demo1 = new arr('Cat', 7, 'Boy')
+        console.log(demo1.userName);
+        console.log(demo1['sex']);
+        demo1.music('偏爱')
+
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

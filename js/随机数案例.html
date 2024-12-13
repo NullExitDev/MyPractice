@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function getRandom(min, max) {
+            return Math.floor(Math.random() * (max - min + 1)) + min;
+        }
+        var random = getRandom(1, 10);
+        console.log(random);
+        do {
+            var menu = prompt('请输入数字:' + random);
+            if (menu < random) {
+                alert('猜小了');
+            } else if (menu > random) {
+                alert('猜大了');
+            } else {
+                alert('猜对了就是' + random);
+                break;
+            }
+        } while (true);
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        flag = true
+        do {
+            var menu = prompt('1.计算器模式\n2.年份判断模式\n3.退出')
+            if (menu == 1) {
+                var num1 = prompt('请输入数字1')
+                var num2 = prompt('请输入数字2')
+                alert('结果为：' + (parseInt(num1) + parseInt(num2)))
+            } else if (menu == 2) {
+                fn()
+            } else if (menu == 3) {
+                flag = false
+            }
+        } while (flag);
+
+        function fn() {
+            var year = prompt('请输入年份')
+            if (getYear(year)) {
+                alert('当前为闰年')
+            } else {
+                alert('当前为平年')
+            }
+        }
+        function getYear(year) {
+            var flag = false
+            if (year % 4 == 0 && year % 100 != 0 || year % 400 == 0) {
+                flag = true
+            }
+            return flag
+        }
+
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

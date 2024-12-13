@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            user-select: none;
+            box-sizing: border-box;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #fff;
+        }
+
+        button {
+            width: 230px;
+            height: 30px;
+        }
+    </style>
+</head>
+
+<body>
+    <button>ClickMe</button>
+    <script>
+        var btn = document.getElementsByTagName('button')
+        var bg = document.body
+        console.log(btn);
+        var flag = 0
+        btn[0].onclick = function () {
+            if (flag == 0) {
+                bg.style.backgroundColor = '#000'
+                flag = 1
+            } else {
+                bg.style.backgroundColor = '#fff'
+                flag = 0
+            }
+        }
+    </script>
+</body>
+
+</html>

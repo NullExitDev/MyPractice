@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div {
+            position: absolute;
+            top: 300px;
+            left: 0;
+            width: 200px;
+            height: 200px;
+            background-color: aqua;
+        }
+    </style>
+</head>
+
+<body>
+    <button>click me</button>
+    <div></div>
+    <script>
+        var btn = document.querySelector('button')
+        var div = document.querySelector('div')
+        function animate(obj, target, callback) {
+            //先清除定时器
+            clearInterval(obj.timer)
+            //动画本质就是利用定时器
+            //利用对象有属性的性质来给不同的对象设置定时器（obj.timer）
+            obj.timer = setInterval(function () {
+                //缓动原理就是取步长
+                var step = (target - obj.offsetLeft) / 10
+                //由于步长计算公式算出来的是小数，为了避免小数，我们需要取整
+                step = step > 0 ? Math.ceil(step) : Math.floor(step)
+                //停止判断条件
+                if (obj.offsetLeft == target) {
+                    clearInterval(obj.timer)
+                    if (callback) {
+                        callback()
+                    }
+                }
+
+                //如果是固定的值，那就是匀速动画，反之则为缓动动画
+                obj.style.left = obj.offsetLeft + step + 'px'
+            }, 40)
+        }
+        btn.addEventListener('click', function () {
+            animate(div, 600, function () {
+                div.style.backgroundColor = '#000'
+            })
+        })
+    </script>
+</body>
+
+</html>

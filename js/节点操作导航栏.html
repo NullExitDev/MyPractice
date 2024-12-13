@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            user-select: none;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        .nav>li {
+            position: relative;
+            width: 200px;
+            height: 40px;
+            float: left;
+            background-color: aqua;
+        }
+
+        .nav>li a {
+            display: block;
+            height: inherit;
+            text-align: center;
+            line-height: 40px;
+            color: #fff;
+            background-color: #000;
+        }
+
+        .nav>li a:hover {
+            background-color: #3c3c3c;
+        }
+
+        .nav>li ul {
+            display: none;
+            position: absolute;
+            top: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .nav>li ul li {
+            width: 100px;
+            height: 30px;
+            text-align: center;
+            background-color: #222;
+            color: #fff;
+        }
+    </style>
+</head>
+
+<body>
+    <ul class="nav">
+        <li>
+            <a href="#">Home</a>
+            <ul>
+                <li>1</li>
+                <li>2</li>
+                <li>3</li>
+            </ul>
+        </li>
+        <li>
+            <a href="#">Team</a>
+            <ul>
+                <li>1</li>
+                <li>2</li>
+                <li>3</li>
+            </ul>
+        </li>
+        <li>
+            <a href="#">More</a>
+            <ul>
+                <li>1</li>
+                <li>2</li>
+                <li>3</li>
+            </ul>
+        </li>
+        <li>
+            <a href="#">About</a>
+            <ul>
+                <li>1</li>
+                <li>2</li>
+                <li>3</li>
+            </ul>
+        </li>
+    </ul>
+    <script>
+        var nav = document.querySelector('.nav')
+        var lis = nav.children
+        console.log(lis);
+        console.log(lis[0].children[1]);
+        for (var i = 0; i < lis.length; i++) {
+            lis[i].onmouseover = function () {
+                this.children[1].style.display = 'block'
+            }
+            lis[i].onmouseout = function () {
+                this.children[1].style.display = 'none'
+            }
+        }
+    </script>
+</body>
+
+</html>

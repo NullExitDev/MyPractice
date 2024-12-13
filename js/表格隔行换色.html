@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            user-select: none;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        table {
+            width: 300px;
+            height: 100px;
+            text-align: center;
+            border: 1px solid #000;
+            border-spacing: 0;
+            border-collapse: collapse;
+        }
+
+        td {
+            border: 1px solid #000;
+        }
+    </style>
+</head>
+
+<body>
+    <table>
+        <thead>
+            <tr>
+                <td>名字</td>
+                <td>编号</td>
+                <td>其他</td>
+            </tr>
+        </thead>
+        <tbody id="td">
+            <tr>
+                <td>1</td>
+                <td>2</td>
+                <td>3</td>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>2</td>
+                <td>3</td>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>2</td>
+                <td>3</td>
+            </tr>
+        </tbody>
+    </table>
+    <script>
+        var td = document.getElementById('td').getElementsByTagName('tr')
+        console.log(td);
+        for (var i = 0; i < td.length; i++) {
+            td[i].onmouseover = function () {
+                this.style.backgroundColor = '#3c3c3c'
+                this.style.color = '#fff'
+            }
+            td[i].onmouseout = function () {
+                this.style.backgroundColor = ''
+                this.style.color = '#000'
+            }
+        }
+    </script>
+</body>
+
+</html>

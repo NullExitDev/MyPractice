@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            user-select: none;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        div {
+            width: 100px;
+            height: 100px;
+            background-color: #000;
+            margin: 5px;
+            color: #fff;
+            text-align: center;
+            line-height: 100px;
+            font-size: 35px;
+        }
+    </style>
+</head>
+
+<body>
+    <div>1</div>
+    <div>2</div>
+    <div>3</div>
+    <script>
+        var div = document.querySelectorAll('div')
+        getTime()
+        setInterval(getTime, 1000)
+        function getTime() {
+            var date = new Date()
+            h = date.getHours()
+            h = h < 10 ? '0' + h : h
+            div[0].innerHTML = h
+            m = date.getMinutes()
+            m = m < 10 ? '0' + m : m
+            div[1].innerHTML = m
+            s = date.getSeconds()
+            s = s < 10 ? '0' + s : s
+            div[2].innerHTML = s
+        }
+    </script>
+</body>
+
+</html>

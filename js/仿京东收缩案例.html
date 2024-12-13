@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .container {
+            position: fixed;
+            bottom: 200px;
+            right: 0;
+            width: 50px;
+            height: 50px;
+            text-align: center;
+            line-height: 50px;
+            cursor: pointer;
+            color: #fff;
+        }
+
+        .con {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 200px;
+            height: 50px;
+            background-color: purple;
+            z-index: -1;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <span>L</span>
+        <div class="con"></div>
+    </div>
+    <script>
+        var container = document.querySelector('.container')
+        var con = document.querySelector('.con')
+        //动画函数
+        function animate(obj, target, callback) {
+            clearInterval(obj.timer)
+            obj.timer = setInterval(function () {
+                var step = (target - obj.offsetLeft) / 10
+                step = step > 0 ? Math.ceil(step) : Math.floor(step)
+                if (obj.offsetLeft == target) {
+                    clearInterval(obj.timer)
+                    if (callback) {
+                        callback()
+                    }
+                }
+                obj.style.left = obj.offsetLeft + step + 'px'
+            }, 15)
+        }
+        container.addEventListener('mouseenter', function () {
+            container.children[0].innerHTML = 'R'
+            animate(con, -150)
+        })
+        container.addEventListener('mouseleave', function () {
+            container.children[0].innerHTML = 'L'
+            animate(con, 0)
+        })
+    </script>
+</body>
+
+</html>

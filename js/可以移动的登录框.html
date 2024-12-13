@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            user-select: none;
+        }
+
+        body {
+            height: 100vh;
+        }
+
+        input {
+            outline: none;
+        }
+
+        a {
+            text-align: center;
+            display: block;
+            margin: 10px auto;
+            font-size: 40px;
+            color: #000;
+            text-decoration: none;
+        }
+
+        .container {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 450px;
+            height: 200px;
+            background-color: #fff;
+            border-radius: 10px;
+            z-index: 99;
+            text-align: center;
+            box-shadow: 0 0 20px 5px #fff;
+        }
+
+        .container h4 {
+            padding-top: 5px;
+            font-size: 25px;
+            text-align: center;
+            letter-spacing: 5px;
+            cursor: move;
+        }
+
+        .container .input-box {
+            margin-top: 20px;
+        }
+
+        .container .input-box input {
+            border: none;
+            border-bottom: 2px solid #000;
+            width: 180px;
+        }
+
+        .container .input-box label {
+            position: absolute;
+            padding-right: 10px;
+        }
+
+        .bg {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, .3);
+        }
+
+        .container button {
+            margin-top: 20px;
+            width: 80px;
+            height: 30px;
+        }
+    </style>
+</head>
+
+<body>
+    <a href="javascript:;">点我登录</a>
+    <div class="container">
+        <h4>登 录</h4>
+        <div class="input-box">
+            <label for="uname">账号</label><input type="text" id="uname">
+        </div>
+        <div class="input-box">
+            <label for="pwd">密码</label><input type="password" id="pwd">
+        </div>
+        <button>登录</button>
+        <button>关闭</button>
+    </div>
+    <div class="bg"></div>
+    <script>
+        var container = document.querySelector('.container')
+        var a = document.querySelector('a')
+        var h4 = document.querySelector('h4')
+        var btn = document.querySelectorAll('button')
+        var bg = document.querySelector('.bg')
+        h4.addEventListener('mousedown', function (e) {
+            //获取鼠标坐标
+            var x = e.pageX - container.offsetLeft
+            var y = e.pageY - container.offsetTop
+            document.addEventListener('mousemove', fn)
+            function fn(e) {
+                //鼠标距离页面的坐标 - 鼠标当前坐标 = 元素坐标
+                container.style.left = e.pageX - x + 'px'
+                container.style.top = e.pageY - y + 'px'
+            }
+            document.addEventListener('mouseup', function () {
+                document.removeEventListener('mousemove', fn)
+            })
+        })
+
+        a.addEventListener('click', function () {
+            bg.style.display = 'block'
+            container.style.display = 'block'
+
+        })
+
+        btn[1].addEventListener('click', function () {
+            bg.style.display = 'none'
+            container.style.display = 'none'
+        })
+    </script>
+</body>
+
+</html>

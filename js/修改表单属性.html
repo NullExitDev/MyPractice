@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            user-select: none;
+            box-sizing: border-box;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        input {
+            outline: none;
+            height: 40px;
+            width: 260px;
+            border: 2px solid #0779dd;
+            font-size: 20px;
+            padding: 0 10px;
+        }
+
+        button {
+            height: 40px;
+            width: 100px;
+            background-color: transparent;
+            border: 2px solid #022442;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <input type="password" name="" id="pwd" placeholder="请输入密码">
+        <button>忘记密码</button>
+        <script>
+            var input = document.getElementById('pwd')
+            var btn = document.querySelector('button')
+            flag = 0
+            btn.onclick = function () {
+                if (flag == 0) {
+                    input.type = 'text'
+                    flag = 1
+                } else {
+                    input.type = 'password'
+                    flag = 0
+                }
+            }
+        </script>
+    </div>
+</body>
+
+</html>

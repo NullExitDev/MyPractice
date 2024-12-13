@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function getResult() {
+            var arr = [5, 4, 3, 2, 1]
+            //外层负责交换，一共交换4次，所以为-1
+            for (var i = 0; i <= arr.length - 1; i++) {
+                //里层控制每一次交换的次数，可参考五角星案例
+                for (var j = 0; j <= arr.length - i - 1; j++) {
+                    //如果arr[0] > arr[0 + 1]...以此类推
+                    if (arr[j] > arr[j + 1]) {
+                        var temp = arr[j]
+                        arr[j] = arr[j + 1]
+                        arr[j + 1] = temp
+                    }
+                }
+            }
+            return arr
+        }
+        console.log(getResult());
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

@@ -1,0 +1,1 @@
+export const baseURL = 'http://www.baidu.com'
